@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-llmwiki
+      name: '@sidady/dsh-llmwiki'
+      config: {}

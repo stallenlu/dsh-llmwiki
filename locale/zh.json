@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "LLM Wiki 知识库",
+    "description": "把文档变成有组织、互相链接的知识库：原生页面、双链、图谱与带引用的检索，并可选连接桌面版 LLM Wiki。",
+    "detail": "docs/DETAIL.md"
+  }
+}

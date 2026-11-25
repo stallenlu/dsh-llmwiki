@@ -1,0 +1,51 @@
+{
+  "name": "@sidady/dsh-llmwiki",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "LLM Wiki for DeepSeek Harness — turn documents into an organized, interlinked, self-maintaining knowledge base, with an optional bridge to the nashsu/llm_wiki desktop app.",
+  "keywords": ["dsh-plugin", "deepseek-harness", "llm-wiki", "knowledge-base", "wikilinks", "graph", "memory"],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib/engine.js",
+    "lib/llm.js",
+    "lib/bridge.js",
+    "lib/routes.js",
+    "lib/wikiRules.js",
+    "lib/hygiene.js",
+    "lib/fusion.js",
+    "cordis.patch.yml",
+    "locale/en.json",
+    "locale/zh.json",
+    "icon.svg",
+    "docs/DETAIL.md",
+    "docs/preview.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": { "node": ">=20" },
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-slots"]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stallenlu/dsh-llmwiki.git"
+  },
+  "bugs": { "url": "https://github.com/stallenlu/dsh-llmwiki/issues" },
+  "license": "MIT",
+  "homepage": "https://github.com/stallenlu/dsh-llmwiki#readme",
+  "publishConfig": { "access": "public" }
+}

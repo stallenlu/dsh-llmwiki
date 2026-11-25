@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "LLM Wiki",
+    "description": "Turn documents into an organized, interlinked knowledge base — native pages, wikilinks, graph and cited retrieval, with an optional desktop-app bridge.",
+    "detail": "docs/DETAIL.md"
+  }
+}
