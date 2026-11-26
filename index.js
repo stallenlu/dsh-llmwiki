@@ -12,11 +12,13 @@ import { makeHandler, describe } from './lib/routes.js';
 import * as rules from './lib/wikiRules.js';
 import * as hygiene from './lib/hygiene.js';
 import { fuseQuery, describeFusion } from './lib/fusion.js';
+import { workbenchHandler } from './lib/workbench.js';
 
 // P1 of the iwtown fusion: systemPrompt for the always-on compass/rules.
 export const inject = ['tools', 'webServer', 'systemPrompt'];
 
 const ROUTE_PREFIX = '/api/llm-wiki/';
+const WORKBENCH_PATH = '/llm-wiki';
 const handle = makeHandler();
 
 const description =
@@ -113,6 +115,13 @@ export function apply(ctx) {
   ctx.effect(
     () => ctx.webServer.register({ kind: 'prefix', path: ROUTE_PREFIX, handler: handle }),
     'dsh-llmwiki: routes',
+  );
+
+  // Standalone full-page workbench — same origin, no second server/port/CORS.
+  // exact route wins over the prefix table; serves a self-contained HTML doc.
+  ctx.effect(
+    () => ctx.webServer.register({ kind: 'exact', path: WORKBENCH_PATH, handler: workbenchHandler }),
+    'dsh-llmwiki: workbench',
   );
 
   ctx.effect(

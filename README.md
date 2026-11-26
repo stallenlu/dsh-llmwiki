@@ -1,20 +1,6 @@
-# LLM Wiki for DeepSeek Harness (`@sidady/dsh-llmwiki`)
+# LLM Wiki for DeepSeek Harness (`dsh-llmwiki`)
 
 Turn documents into an organized, interlinked knowledge base inside DSH. This plugin is a **clean-room native implementation** of the LLM Wiki *knowledge model* made popular by the upstream project, plus an optional bridge to a running desktop app.
-
-## Install
-
-```sh
-dsh plugin add @sidady/dsh-llmwiki
-```
-
-Or install the GitHub source directly:
-
-```sh
-dsh plugin add stallenlu/dsh-llmwiki
-```
-
-> This is a **non-official** plugin. See the attribution and disclaimer below. It is published under the `@sidady` npm scope because the unscoped name `dsh-llmwiki` is already taken by an unrelated package.
 
 ## What it does
 
@@ -54,6 +40,10 @@ llm_wiki(action="query", vault="research", question="What are the main ideas?")
 ```
 
 Or open the **LLM Wiki** panel from the sidebar for a no-code interface (vaults → ingest → pages → graph → ask → review → maintain). Maintenance actions and fusion retrieval are also available in the panel.
+
+### Standalone workbench
+
+For a fuller, browser-native experience, click **Open workbench** in the sidebar panel header, or visit `/llm-wiki` on the DeepSeek Harness web origin. It is a self-contained page (no CDN, no second server, no extra port) that reuses the same `/api/llm-wiki/` API and the same wikis on disk. The panel stays compact; the workbench gives each function room to breathe. Same dsh-mnemon-derived palette in both, with light/dark following your system.
 
 New maintenance tools at a glance:
 

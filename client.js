@@ -6,6 +6,7 @@ window.__ModuleLoader__.load({
     const { useCallback, useEffect, useState } = React;
     const NS = 'dsh-llmwiki';
     const ROUTE = '/api/llm-wiki/';
+    const WORKBENCH_PATH = '/llm-wiki';
     const PANEL_ID = 'dsh-llmwiki';
 
     // Static client factories receive ONLY `require`. Inject our own stylesheet;
@@ -97,6 +98,7 @@ window.__ModuleLoader__.load({
       noVault: '还没有知识库。切到「知识库」新建一个，然后导入文档。',
       tip: '文档按 LLM Wiki 模型组织：原始来源不可变，wiki 页面带 [[双链]] 与来源追溯，可检索、可成图。',
       bridge: '桌面版连接', bridgeBtn: '检查桌面版 LLM Wiki',
+      openWorkbench: '打开独立工作台',
     };
     const en = {
       vaults: 'Wikis', ingest: 'Ingest', pages: 'Pages', graph: 'Graph', ask: 'Ask', review: 'Review', maintain: 'Maintain',
@@ -109,6 +111,7 @@ window.__ModuleLoader__.load({
       noVault: 'No wiki yet. Create one under "Wikis", then ingest a document.',
       tip: 'Documents follow the LLM Wiki model: immutable raw sources, wiki pages with [[wikilinks]] and source traceability, searchable and graphable.',
       bridge: 'Desktop app', bridgeBtn: 'Check desktop LLM Wiki',
+      openWorkbench: 'Open workbench',
     };
 
     function App() {
@@ -170,9 +173,10 @@ window.__ModuleLoader__.load({
 
       return h('div', { className: 'llw-root' },
         h('div', { className: 'llw-h' },
-          h('img', { className: 'llw-logo', src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5" fill="%23a855f7"/><circle cx="18" cy="7" r="2" fill="%233b82f6"/><circle cx="12" cy="18" r="2.5" fill="%2322c55e"/><path d="M8 7L16 8M7 8l4 8M17 9l-4 7" stroke="%239aa0a8" stroke-width="1.2"/></svg>' }),
+          h('img', { className: 'llw-logo', src: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5" fill="%232563eb"/><circle cx="18" cy="7" r="2" fill="%2316a34a"/><circle cx="12" cy="18" r="2.5" fill="%23d97706"/><path d="M8 7L16 8M7 8l4 8M17 9l-4 7" stroke="%239aa0a8" stroke-width="1.2"/></svg>' }),
           'LLM Wiki',
-          h('button', { className: 'llw-btn', style: { marginLeft: 'auto', padding: '3px 9px', fontSize: 11 }, onClick: () => setLang(lang === 'zh' ? 'en' : 'zh') }, lang === 'zh' ? 'EN' : '中文'),
+          h('a', { className: 'llw-btn', href: WORKBENCH_PATH, target: '_blank', rel: 'noreferrer noopener', style: { marginLeft: 'auto', padding: '3px 9px', fontSize: 11, textDecoration: 'none' } }, t.openWorkbench),
+          h('button', { className: 'llw-btn', style: { padding: '3px 9px', fontSize: 11 }, onClick: () => setLang(lang === 'zh' ? 'en' : 'zh') }, lang === 'zh' ? 'EN' : '中文'),
         ),
         h('p', { className: 'llw-sub' }, t.tip),
         h('div', { className: 'llw-tabs' },
